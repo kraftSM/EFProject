@@ -20,7 +20,7 @@ namespace EFProject.Entities
         public User? User { get; set; } //Link prop to [ForeignKey("UserId")]
         public string ToString()
         {
-            return string.Format("Id:{0,-3} Autor:{1,-10} Name:{2,-16}\n  Year:{3,-5}  Genre:{4,-8}", Id.ToString(), Autor, Name, Year, Genre);
+            return string.Format("Id:{0,-3} Autor:{1,-10} Name:{2,-16}\n  Year:{3,-5}  Genre:{4,-8} OnHand:{5,-3}", Id.ToString(), Autor, Name, Year, Genre, UserId.ToString());
         }
     }
 }

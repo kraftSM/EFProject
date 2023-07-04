@@ -13,7 +13,13 @@ namespace EFProject.Views
         add,
         update,
         delete,
+        cbna,
+        sgyy,
         sba,
+        snb,
+        boh,
+        bou,
+        ubn,
         sort,
         exit
     }

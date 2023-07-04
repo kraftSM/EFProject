@@ -12,24 +12,22 @@ namespace EFProject
         {
             UserRepository userRepository = new UserRepository();
             BookRepository bookRepository = new BookRepository();
-            # region
+            
             using (AppContext app = new AppContext())
                 
             {
                 app.Database.EnsureDeleted();
                 app.Database.EnsureCreated();
-
-                ////// Добавление информации
-                ////var user1 = new User { Name = "Arthur", Email = "111@mil.ru" };
+                
+                # region
+                //// Добавление Начальной информации В БД
                 var user1 = new User { Name = "Arthur", Role = "LibMan", Email = "111@lib.ru" };
                 var user2 = new User { Name = "Klim", Role = "User", Email = "222@lib.ru" };
                 var user3 = new User { Name = "Bruce", Role = "User", Email = "333@lib.ru" };
                 var user4 = new User { Name = "Bob", Role = "User", Email = "444@lib.ru" };
                 app.Users.Add(user1);
-                ////app.Users.Add(user1);
-                app.Users.Add(user2);
-                //// Добавление нескольких пользователей
-                app.Users.AddRange(user3, user4);
+                
+                app.Users.AddRange(user1,user2,user3, user4);
                 app.SaveChanges();
                 //  db.SaveChanges();
 
@@ -37,14 +35,15 @@ namespace EFProject
                 Book book_2 = new Book { Name = "Ведьмак", Genre = "Фэнтези", Autor = "Сапковский", Year = 1993, UserId = 3 };
                 app.Books.AddRange(book_1, book_2);
 
-                var book1 = new Book { Name = "Азбука", Autor = "Пушкин", Genre = "Учебник", Year = 2000, UserId = 1 };
-                var book2 = new Book { Name = "Герой", Autor = "Лермон", Year = 2000, Genre = "Проза" };
-                var book3 = new Book { Name = "Мертвые души", Autor = "Гоголь", Year = 2003, Genre = "Поэма" };
+                var book1 = new Book { Name = "Азбука", Autor = "Просвещение", Genre = "Учебник", Year = 2000, UserId = 3 };
+                var book2 = new Book { Name = "Герой", Autor = "Лермонтов", Year = 2000, Genre = "Проза" };
+                var book3 = new Book { Name = "Мертвые души", Autor = "Гоголь", Year = 2003, Genre = "Поэма", UserId = 2 };
                 var book4 = new Book { Name = "Евгений Онегин", Autor = "Пушкин", Year = 2007, Genre = "Поэма" };
                 var book5 = new Book { Name = "Чиполлино", Autor = "Родари", Genre = "Сказки", Year = 1998 };
-                var book6 = new Book { Name = "Золушка", Autor = "Перро", Genre = "Сказки", Year = 1990 };
+                var book6 = new Book { Name = "Золушка", Autor = "Перро", Genre = "Сказки", Year = 1990, UserId = 4 };
+                var book7 = new Book { Name = "Золотой петушок", Autor = "Пушкин", Genre = "Сказки", Year = 2000, UserId = 2 };
 
-                app.Books.AddRange(book1, book2, book3, book4, book5, book6);
+                app.Books.AddRange(book1, book2, book3, book4, book5, book6, book7);
                 //db.Books.AddRange(book5, book6);
 
 

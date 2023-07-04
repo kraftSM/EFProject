@@ -44,6 +44,8 @@ namespace EFProject.Repositories
             Console.WriteLine("Введите Email нового пользователя: ");
             user.Email = Console.ReadLine();
 
+            Console.WriteLine("Введите Role нового пользователя: ");
+            user.Role = Console.ReadLine();
 
             using (AppContext app = new AppContext())
             {
@@ -56,12 +58,9 @@ namespace EFProject.Repositories
         {
             using (AppContext app = new AppContext())
             {
-                //создается сущность (Entities)
                 Entities.User userData = app.Users.Where(i => i.Id == Id).FirstOrDefault();
                 Console.Write("Введите новое имя пользователя: ");
                 userData.Name = Console.ReadLine();
-
-                //FrameWork при вызове SaveChanges() сам определит, что изменилось и произведет нужный SQLзапрос
                 app.SaveChanges();
             }
         }
